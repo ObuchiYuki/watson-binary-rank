@@ -4,9 +4,11 @@
 
 [![verify](https://github.com/ObuchiYuki/watson-binary-rank/actions/workflows/verify.yml/badge.svg)](https://github.com/ObuchiYuki/watson-binary-rank/actions/workflows/verify.yml)
 [![lean](https://github.com/ObuchiYuki/watson-binary-rank/actions/workflows/lean.yml/badge.svg)](https://github.com/ObuchiYuki/watson-binary-rank/actions/workflows/lean.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24586599.svg)](https://doi.org/10.5281/zenodo.24586599)
 
 **Author:** Yuki Obuchi  
 **First published:** 2026-11-27  
+**DOI:** [10.5281/zenodo.24586599](https://doi.org/10.5281/zenodo.24586599) (all versions; per-version DOIs are listed on Zenodo)  
 **Status:** research note (not peer-reviewed). The disproof at $k=33$ and the lower bound $4^k$ are machine-checked in Lean 4 with Mathlib ([lean/](lean/)).
 
 The **binary rank** $\mathrm{br}(T)$ of a 0/1 matrix is the least number of all-ones rectangles that partition its ones. Watson (2016) gave a $5\times6$ matrix $M$ with $\mathrm{br}(M)=5$ and nonnegative rank $4$, and conjectured:
@@ -119,7 +121,7 @@ To the best of our knowledge, the failure of Conjecture 1 and the exact rate are
 
 Use GitHub's "Cite this repository" button, or see [CITATION.cff](CITATION.cff).
 
-> Yuki Obuchi. *Watson's Binary-Rank Conjecture Is False: Kronecker Powers of a Rank-Five 0/1 Matrix Need Only 4^{k+o(k)} Rectangles.* Research note, 2026. https://github.com/ObuchiYuki/watson-binary-rank
+> Yuki Obuchi. *Watson's Binary-Rank Conjecture Is False: Kronecker Powers of a Rank-Five 0/1 Matrix Need Only 4^{k+o(k)} Rectangles.* Research note, 2026. Zenodo. https://doi.org/10.5281/zenodo.24586599
 
 ## Acknowledgments
 

@@ -13,7 +13,12 @@ abstract: >-
 authors:
   - given-names: Yuki
     family-names: Obuchi
-version: 1.0.0
+version: 1.0.1
+doi: 10.5281/zenodo.24586599
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24586599
+    description: "Concept DOI (all versions)"
 date-released: 2026-11-27
 repository-code: "https://github.com/ObuchiYuki/watson-binary-rank"
 url: "https://github.com/ObuchiYuki/watson-binary-rank"
