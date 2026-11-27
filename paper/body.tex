@@ -1,0 +1,92 @@
+\section{Definitions}
+
+A 0/1 matrix $T$ with row set $R$ and column set $C$ is identified with its set of ones. A \emph{rectangle} is a set $R'\times C'$. The binary rank $\br(T)$ (Watson's $\rank_{0,1}$) is the least number of all-ones rectangles that partition the ones of $T$. The Kronecker power $T^{\otimes k}$ has rows $R^k$, columns $C^k$ and entry $\prod_i T(r_i,c_i)$. We use three standard facts.
+\begin{itemize}
+\item[(F1)] $\br$ is invariant under transposition and permutations, and does not increase when rows or columns are deleted.
+\item[(F2)] $\br(A\otimes B)\le\br(A)\br(B)$.
+\item[(F3)] A fooling set $\{(r_j,c_j)\}_{j\in J}$ (all $T(r_j,c_j)=1$; for $j\neq j'$ one of $T(r_j,c_{j'})$, $T(r_{j'},c_j)$ is $0$) gives $\br(T)\ge|J|$, and $J^k$ is a fooling set of $T^{\otimes k}$.
+\end{itemize}
+
+\paragraph{Watson's matrix.} In the proof of Theorem~2(2) of \cite{Wa16},
+\[
+M=\begin{pmatrix}1&1&1&0&0&0\\1&0&0&1&1&0\\0&1&0&1&0&1\\0&0&1&0&1&1\\1&1&1&1&1&1\end{pmatrix},
+\]
+with nonnegative rank $4$ and $\br(M)=5$.
+\begin{conjecture}[Watson \cite{Wa16}]
+For all $k$, $\rank_{0,1}(M^{\otimes k})=5^k$.
+\end{conjecture}
+
+\paragraph{Graph matrices.} For a finite loopless multigraph $G=(V,E)$, the matrix $T_G$ has rows $E$, columns $\{0\}\sqcup V$, $T_G(e,0)=1$, and $T_G(e,v)=1$ iff $v$ is an endpoint of $e$. For $K_4$ (edges $12,13,14,23,24,34$), $M^{\mathsf T}=T_{K_4}$: the columns of $M$ are the edges, the top four rows are the vertices and the bottom row is the column $0$. So $\br(M^{\otimes k})=\br(T_{K_4}^{\otimes k})$.
+
+\section{The code rule}
+
+For $x\in(\{0\}\sqcup V)^k$ let $Z(x)=\{i:x_i=0\}$. A set $C\subseteq\F^k$ has the \emph{face property for $Z\subseteq[k]$} if every face $\{y':y'_i=y_i\ (i\notin Z)\}$ contains exactly one point of $C$. Label the two endpoints of every edge $e$ by $\lambda(e,\cdot)\in\{0,1\}$, one endpoint each, and for $v_i\in e_i$ put $y(e,v)=(\lambda(e_i,v_i))_i$.
+
+\begin{theorem}\label{thm:code}
+Let $(C_Z)_{Z\subseteq[k]}$ be a family in which $C_Z$ has the face property for $Z$, and let $t$ be the number of distinct sets in it. Then $\br(T_G^{\otimes k})\le|V|^k\,t$.
+\end{theorem}
+\begin{proof}
+For $v\in V^k$ and a set $C$ of the family let
+\[
+\mathcal R_{v,C}=\{e:\ v_i\in e_i\ \forall i,\ y(e,v)\in C\}\times\{x:\ x_i\in\{0,v_i\}\ \forall i,\ C_{Z(x)}=C\}.
+\]
+These are at most $|V|^kt$ rectangles, and they are all-ones. Let $(e,x)$ be a one and $Z=Z(x)$. For $i\notin Z$ the column $x_i$ is an endpoint of $e_i$; put $y_i=\lambda(e_i,x_i)$. The face property gives a unique $y^\circ\in C_Z$ agreeing with $y$ outside $Z$. Put $v_i=x_i$ for $i\notin Z$, and for $i\in Z$ let $v_i$ be the endpoint of $e_i$ with label $y^\circ_i$. Then $(e,x)\in\mathcal R_{v,C_Z}$. If also $(e,x)\in\mathcal R_{v',C'}$, then $C'=C_Z$ and $v'=v$ outside $Z$, so $y(e,v')\in C_Z$ agrees with $y$ outside $Z$; hence $y(e,v')=y^\circ$ and $v'=v$ on $Z$ as well.
+\end{proof}
+
+\section{Families from parity-check matrices}
+
+\begin{lemma}\label{lem:ker}
+If $H$ is an $m\times k$ matrix over $\F$, $|Z|=m$, and the columns $H_Z$ indexed by $Z$ are invertible, then $\ker H$ has the face property for $Z$.
+\end{lemma}
+\begin{proof}
+$Hy=H_Zy_Z+H_{\bar Z}y_{\bar Z}=0$ has the unique solution $y_Z=H_Z^{-1}H_{\bar Z}y_{\bar Z}$.
+\end{proof}
+
+\begin{lemma}\label{lem:count}
+Let $g_m=|\mathrm{GL}_m(\F)|$ and $\mathrm{bad}(m)=2^{m(k-m)}(2^{m^2}-g_m)$. If $\binom km\mathrm{bad}(m)^N<2^{mkN}$, there are $m\times k$ matrices $H_1,\dots,H_N$ such that every $m$-set $Z$ has some $(H_j)_Z$ invertible.
+\end{lemma}
+\begin{proof}
+For a fixed $Z$, exactly $\mathrm{bad}(m)^N$ of the $2^{mkN}$ tuples fail; take a union bound over the $\binom km$ sets.
+\end{proof}
+
+Let $t(k)$ be the least possible $t$ in Theorem~\ref{thm:code}. Choosing $N_m$ for each $m=0,\dots,k$ gives $t(k)\le\sum_m N_m$. Since $\prod_{i=1}^m(1-2^{-i})\ge\frac14+2^{-m-1}$ (induction: $(\frac14+2^{-m-1})(1-2^{-m-1})\ge\frac14+2^{-m-2}$), we have $\mathrm{bad}(m)\le\frac34 2^{mk}$, and with $\binom km\le 2^k$ the value $N=\lfloor2.41k\rfloor+1$, which exceeds $k\ln 2/\ln(4/3)$, works for every $m$. Hence
+\[
+t(k)\le(k+1)(\lfloor 2.41k\rfloor+1).
+\]
+
+\section{Results}
+
+\begin{theorem}\label{thm:main}
+For every $k\ge1$, $4^k\le\br(M^{\otimes k})\le4^k(k+1)(\lfloor2.41k\rfloor+1)$. In particular $\lim_k\br(M^{\otimes k})^{1/k}=4$.
+\end{theorem}
+\begin{proof}
+The upper bound is Theorem~\ref{thm:code} for $K_4$ with the bound on $t(k)$. For the lower bound, the pairs $(1,1)$, $(2,4)$, $(3,2)$, $(4,3)$ form a fooling set of $M$; apply (F3).
+\end{proof}
+
+\begin{corollary}\label{cor:33}
+$\br(M^{\otimes33})\le4^{33}\cdot1431<5^{33}$. Hence $\br(M^{\otimes k})<5^k$ for every $k\ge33$, and Conjecture~1 is false.
+\end{corollary}
+\begin{proof}
+For $k=33$ the values
+\[
+\begin{aligned}(N_0,\dots,N_{16})&=(1,6,14,22,29,35,41,45,49,52,54,56,58,60,61,61,62),\\ (N_{17},\dots,N_{33})&=(62,61,61,60,58,56,54,52,49,45,41,37,32,26,19,11,1)\end{aligned}
+\]
+satisfy Lemma~\ref{lem:count} (exact integer check) and sum to $1431<(5/4)^{33}$. For $k>33$ use (F2) and $\br(M)\le5$.
+\end{proof}
+
+\begin{corollary}\label{cor:shitov}
+Shitov's $5\times5$ matrix $B$ \cite{Sh26} is $M$ with one column deleted, and $4^k\le\br(B^{\otimes k})\le4^k(k+1)(\lfloor2.41k\rfloor+1)$.
+\end{corollary}
+\begin{proof}
+Upper bound by (F1). Lower bound: $\rank_{\mathbb Q}B=4$, real rank is multiplicative, and $\br\ge\rank$.
+\end{proof}
+
+\begin{corollary}\label{cor:graph}
+For every finite loopless multigraph $G$, $\br(T_G^{\otimes k})\le|V|^k(k+1)(\lfloor2.41k\rfloor+1)$.
+\end{corollary}
+
+\begin{remark}
+The disproof is an existence argument; no explicit partition of $M^{\otimes33}$ (about $10^{23}$ rectangles) is given. The conjecture holds for $k=1$; an unpublished SAT computation of ours (without a DRAT certificate) gives $\br(M\otimes M)=25$. The least failing $k$ is at most $33$ and is not known. Watson's motivation was a $\log_45$ separation between unambiguous nondeterministic communication and sampling for the family $M^{\otimes k}$; Theorem~\ref{thm:main} shows that $\log_2\br(M^{\otimes k})=2k+O(\log k)$, so this family gives no such separation.
+\end{remark}
+
+\paragraph{Related work.} Shitov \cite{Sh26} and Poindexter \cite{Po26} showed that binary rank is not multiplicative under Kronecker squares, answering Watson's question; both concern squares of $5\times5$ matrices. Shitov's $B$ is $M$ minus a column, so a bound for $B$ does not bound $M$. Poindexter asks whether higher powers improve the rate $\sqrt{24}$; for Shitov's $B$ the rate is exactly $4$ by Corollary~\ref{cor:shitov}. Ghosal and Karrenbauer \cite{GK25} and Parnas \cite{Pa26} list the multiplicativity of binary rank as open. To the best of our knowledge, the failure of Conjecture~1 and the exact rate are new.

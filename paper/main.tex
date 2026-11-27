@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Watson's Binary-Rank Conjecture Is False: Kronecker Powers of a Rank-Five 0/1 Matrix Need Only 4^(k+o(k)) Rectangles},
+  pdfauthor={Yuki Obuchi},
+  pdfsubject={Binary rank of Kronecker powers},
+  pdfkeywords={binary rank, biclique partition, Kronecker product, tensor power, nonnegative rank, unambiguous communication complexity, Watson's conjecture, Lean 4},
+  pdfcreator={LaTeX},
+}
+\DeclareMathOperator{\br}{br}
+\DeclareMathOperator{\rank}{rank}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newcommand{\F}{\mathbb F_2}
+\title{Watson's Binary-Rank Conjecture Is False:\\ Kronecker Powers of a Rank-Five 0/1 Matrix\\ Need Only $4^{k+o(k)}$ Rectangles}
+\author{Yuki Obuchi}
+\date{Research note, first published 2026-11-27\\ \small \url{https://github.com/ObuchiYuki/watson-binary-rank}}
+\begin{document}
+\maketitle
+\begin{abstract}
+The binary rank $\br(T)$ of a 0/1 matrix is the least number of all-ones rectangles that partition its ones. Watson (2016) gave a $5\times 6$ matrix $M$ with $\br(M)=5$ and nonnegative rank $4$, and conjectured that $\br(M^{\otimes k})=5^k$ for all $k$. We show $4^k\le\br(M^{\otimes k})\le 4^k(k+1)(\lfloor 2.41k\rfloor+1)$ for every $k$. In particular $\br(M^{\otimes 33})\le 4^{33}\cdot 1431<5^{33}$, so the conjecture fails for every $k\ge 33$, and the asymptotic rate of $M$ is exactly $4$, its nonnegative rank. The construction works for the incidence matrix of any loopless multigraph with an extra all-ones column: the $k$-th power has binary rank at most $|V|^k\cdot O(k^2)$. The key step breaks ties between overlapping boxes with kernels of random parity-check matrices. The same bounds give rate $4$ for Shitov's $5\times5$ matrix, whose square was the first known example of non-multiplicative binary rank. The disproof at $k=33$ and the lower bound are machine-checked in Lean~4 with Mathlib. This note has not been peer-reviewed.
+\end{abstract}
+
+\input{body.tex}
+
+\section*{Verification}
+The repository contains \texttt{verify.py}, a standalone verifier that uses only the Python standard library (Python~3.10+). It checks that $M^{\mathsf T}=T_{K_4}$, that $M$ has rank $4$ and a fooling set of size $4$, that Shitov's matrix is $M$ minus a column, that the construction gives exact partitions for $k\le 3$ (and $k=4$ with \texttt{--deep}), and that the 34 inequalities behind Corollary~\ref{cor:33} hold as exact integer inequalities. It runs automatically on every push.
+
+\section*{Lean formalization}
+The directory \texttt{lean/} proves Theorem~\ref{thm:code} for every graph and every family (\texttt{code\_rule}), Lemmas~\ref{lem:ker} and~\ref{lem:count} (\texttt{faceProp\_kerSet}, \texttt{exists\_good}), Corollary~\ref{cor:33} for $k=33$ (\texttt{watson\_conjecture\_fails}) and the lower bound $4^k\le\br(M^{\otimes k})$ (\texttt{four\_pow\_le\_binRank}). There is no \texttt{sorry}, and the only axioms are \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The statements use the definitions in \texttt{lean/WatsonBinaryRank/Defs.lean}, which the reader should compare with Section~1. The passage to all $k\ge 33$, the polynomial bound on $t(k)$ and Corollaries~\ref{cor:shitov} and~\ref{cor:graph} are proved on paper only.
+
+\section*{Acknowledgments}
+The construction was found, and its proofs, verifier and Lean formalization were drafted and checked, with the help of AI assistants (Claude by Anthropic; Gemini by Google for an independent cross-check). The author reviewed the final statements.
+
+\input{refs.tex}
+
+\vfill
+\noindent\small This note is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). The accompanying code is MIT-licensed.
+\end{document}

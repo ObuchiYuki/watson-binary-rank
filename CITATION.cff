@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this result, please cite it as below."
+type: software
+title: "Watson's Binary-Rank Conjecture Is False: Kronecker Powers of a Rank-Five 0/1 Matrix Need Only 4^{k+o(k)} Rectangles"
+abstract: >-
+  Watson (2016) conjectured that the binary rank of the k-th Kronecker power
+  of a particular 5 x 6 matrix M is 5^k for all k. We show
+  4^k <= br(M^{(x)k}) <= 4^k (k+1)(floor(2.41k)+1) for every k. In particular
+  br(M^{(x)33}) <= 4^33 * 1431 < 5^33, so the conjecture fails for every
+  k >= 33, and the asymptotic rate is exactly 4, the nonnegative rank of M.
+  The disproof at k = 33 and the lower bound are machine-checked in Lean 4
+  with Mathlib. Research note; not peer-reviewed.
+authors:
+  - given-names: Yuki
+    family-names: Obuchi
+version: 1.0.0
+date-released: 2026-11-27
+repository-code: "https://github.com/ObuchiYuki/watson-binary-rank"
+url: "https://github.com/ObuchiYuki/watson-binary-rank"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - binary rank
+  - biclique partition
+  - Kronecker product
+  - tensor power
+  - nonnegative rank
+  - unambiguous communication complexity
+  - Lean 4

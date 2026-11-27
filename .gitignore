@@ -1,0 +1,10 @@
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/main.pdf
+__pycache__/
+
+lean/.lake/
+lean/lake-manifest.json

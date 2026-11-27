@@ -1,0 +1,38 @@
+{
+  "title": "Watson's Binary-Rank Conjecture Is False: Kronecker Powers of a Rank-Five 0/1 Matrix Need Only 4^(k+o(k)) Rectangles",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "description": "<p>Watson (2016) conjectured that the binary rank of the k-th Kronecker power of a particular 5 &times; 6 matrix M is 5<sup>k</sup> for all k. We show 4<sup>k</sup> &le; br(M<sup>&otimes;k</sup>) &le; 4<sup>k</sup>(k+1)(&lfloor;2.41k&rfloor;+1) for every k. In particular br(M<sup>&otimes;33</sup>) &le; 4<sup>33</sup>&middot;1431 &lt; 5<sup>33</sup>, so the conjecture fails for every k &ge; 33, and the asymptotic rate is exactly 4, the nonnegative rank of M. The construction applies to the incidence matrix of any loopless multigraph with an extra all-ones column, and it also gives rate exactly 4 for Shitov's 5 &times; 5 matrix. The disproof at k = 33 and the lower bound are machine-checked in Lean 4 with Mathlib; a standalone verifier (verify.py) checks the construction for small k and the counting inequalities. Research note; not peer-reviewed.</p>",
+  "creators": [
+    {
+      "name": "Obuchi, Yuki"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "keywords": [
+    "binary rank",
+    "biclique partition",
+    "Kronecker product",
+    "tensor power",
+    "nonnegative rank",
+    "unambiguous communication complexity",
+    "Lean 4"
+  ],
+  "related_identifiers": [
+    {"identifier": "10.4086/cjtcs.2016.002", "relation": "cites", "scheme": "doi", "resource_type": "publication-article"},
+    {"identifier": "10.13140/RG.2.2.26449.90723", "relation": "cites", "scheme": "doi", "resource_type": "publication-preprint"},
+    {"identifier": "10.5281/zenodo.21669565", "relation": "cites", "scheme": "doi", "resource_type": "publication-preprint"},
+    {"identifier": "10.4230/LIPIcs.SEA.2025.18", "relation": "cites", "scheme": "doi", "resource_type": "publication-conferencepaper"},
+    {"identifier": "arXiv:2601.13900", "relation": "cites", "scheme": "arxiv", "resource_type": "publication-preprint"},
+    {"identifier": "https://github.com/ObuchiYuki/watson-binary-rank", "relation": "isSupplementedBy", "scheme": "url", "resource_type": "software"}
+  ],
+  "references": [
+    "Watson, T. (2016). Nonnegative rank vs. binary rank. Chicago Journal of Theoretical Computer Science 2016:2. doi:10.4086/cjtcs.2016.002",
+    "Shitov, Y. (2026). Factoring Kronecker squares of nonnegative matrices with GPT-5.6 Sol. Preprint. doi:10.13140/RG.2.2.26449.90723",
+    "Poindexter, D. D., Jr. (2026). Exact nonmultiplicativity of binary rank under Kronecker products. Preprint. doi:10.5281/zenodo.21669565",
+    "Ghosal, A., Karrenbauer, A. (2025). Engineering insights into biclique partitions and fractional binary ranks of matrices. SEA 2025. doi:10.4230/LIPIcs.SEA.2025.18",
+    "Parnas, M. (2026). Mathematical and computational perspectives on the Boolean and binary rank and their relation to the real rank. arXiv:2601.13900"
+  ],
+  "version": "1.0.0"
+}
